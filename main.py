@@ -1,18 +1,9 @@
-from os import environ
-
 import src.repositorios as repos
-# import src.pullRequests as prs
 
 
 def main(num_repos: int):
-    """
-    Run the pipeline.
-    """
-    print('Generating repositories CSV...')
-    repos_filename = repos.generate_csv(num_repos)
-    print('Generating pullRequests CSV...')
-    # prs.generate_csv(repos_filename)
-    # prs.generate_csv('./out/repositories.csv')
+
+    repos.generate_csv(num_repos)
 
 if __name__ == '__main__':
     import argparse
