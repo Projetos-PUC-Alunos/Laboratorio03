@@ -13,12 +13,40 @@ repositories = """
             stargazers {
               totalCount
             }
-            prClosed: pullRequests(states: [CLOSED]) {
+            Closed: pullRequests(states: [CLOSED]) {
                 totalCount
             }
-            prMerged: pullRequests(states: [MERGED]) {
+            Merged: pullRequests(states: [MERGED]) {
                 totalCount
             }
+          }
+        }
+      }
+    }
+    """
+
+
+pull_requests = """
+    {
+      repository(owner: "{owner}", name: "{name}") {
+        pullRequests(states: [CLOSED, MERGED], first: 100, after: {after}) {
+          pageInfo {
+            endCursor
+            hasNextPage
+          }
+          nodes {
+            id
+            title
+            state
+            createdAt
+            closedAt
+            changedFiles
+            additions
+            deletions
+            reviews { totalCount }
+            body
+            participants { totalCount }
+            comments { totalCount }
           }
         }
       }
