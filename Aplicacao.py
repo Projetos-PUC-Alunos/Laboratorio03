@@ -11,7 +11,7 @@ def Aplicacao(num_repos: int):
 if __name__ == '__main__':
     import argparse
     parser = argparse.ArgumentParser(description='Gerando um arquivo CSV com os repositórios mais populares no GitHub.')
-    parser.add_argument('-n', '--num_repos', type=int, default=200)
+    parser.add_argument('-n', '--num_repos', type=int, default=1)
 
     args = parser.parse_args()
     Aplicacao(args.num_repos)

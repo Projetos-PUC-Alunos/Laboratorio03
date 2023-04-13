@@ -23,6 +23,6 @@ jobs:
         run: python Aplicacao.py
       - name: Upload CSV artifact
         uses: actions/upload-artifact@v2
-        # with:
-        #   name: generated-csv
-        #   path: ./csvs/repositories.csv
+        with:
+          name: generated-csv
+          path: ./csvs/repositories.csv

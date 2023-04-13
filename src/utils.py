@@ -5,9 +5,8 @@ from random import randint
 MAX_QUERY_ATTEMPTS = 10
 GITHUB_INDEX = 0
 GITHUB_TOKEN = [
-    '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',
-    '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',
-    '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'
+    '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',
+    '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',
     ]
 
 def query_runner(query: str, attemp=1) -> dict:
@@ -17,13 +16,13 @@ def query_runner(query: str, attemp=1) -> dict:
     token = GITHUB_TOKEN[GITHUB_INDEX]
     headers = {'Authorization': 'Bearer {}'.format(token)}
     try:
-        sleep(randint(1, 15))
+        sleep(randint(1, 30))
         response = requests.post(url, json={'query': query}, headers=headers)
         remaing_requests = response.headers.get('x-ratelimit-remaining')
         ("Response: ", response.status_code, " -> ", response.json(), "\n") if not remaing_requests else None
 
         if not remaing_requests and response.status_code in (403, 502):
-            sleep(30)
+            sleep(60)
             return query_runner(query, attemp)
 
         if remaing_requests <= '1':

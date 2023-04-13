@@ -11,8 +11,8 @@ def generate_csv(num_repos: int):
     # Cria um DataFrame vazio com as colunas desejadas
     df = pd.DataFrame(columns=['nameWithOwner', 'url', 'createdAt', 'stargazers', 'pullRequests'])
     
-    print("------------- GERANDO DADOS PARA O ARQUIVO CSV PARA REPOSITÓRIOS -------------------")
     while len(df) < num_repos:
+        print("------------- GERANDO DADOS PARA O ARQUIVO CSV PARA REPOSITÓRIOS -------------------")
         
         # Substitui o valor de {after} na query e executa a consulta
         query = queries.repositories.replace('{after}', after)
@@ -24,7 +24,7 @@ def generate_csv(num_repos: int):
             pull_requests = repo['Closed']['totalCount'] + repo['Merged']['totalCount']  
 
             # Aplica um filtro para incluir apenas repositórios com quantidade de pull requests entre 100 e 500
-            if pull_requests < 100 or pull_requests > 500: continue  
+            if pull_requests < 100: continue  
 
             df = pd.concat([df, pd.DataFrame({
                 'nameWithOwner': [repo['nameWithOwner']],
