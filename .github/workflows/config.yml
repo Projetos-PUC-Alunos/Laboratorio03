@@ -16,7 +16,9 @@ jobs:
         with:
           python-version: "3.10.10"
       - name: Install dependencies
-        run: pip install pandas
+        run: |
+          pip install pandas
+          pip install requests
       - name: Generate CSV
         run: python ./Aplicacao.py
       - name: Upload CSV artifact
