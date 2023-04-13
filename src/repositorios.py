@@ -24,7 +24,7 @@ def generate_csv(num_repos: int):
             pull_requests = repo['Closed']['totalCount'] + repo['Merged']['totalCount']  
 
             # Aplica um filtro para incluir apenas repositórios com quantidade de pull requests entre 100 e 500
-            if pull_requests < 100: continue  
+            if pull_requests < 100 or pull_requests > 500: continue  
 
             df = pd.concat([df, pd.DataFrame({
                 'nameWithOwner': [repo['nameWithOwner']],
