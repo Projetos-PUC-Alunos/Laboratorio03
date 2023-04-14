@@ -6,7 +6,7 @@ def Aplicacao(num_repos: int):
 
     # repos_filename = repos.generate_csv(num_repos)
 
-    prs.generate_csv('./out/repositories.csv')
+    prs.generate_csv('./csvs/repositories.csv')
     # prs.generate_csv(repos_filename)
 
 if __name__ == '__main__':
