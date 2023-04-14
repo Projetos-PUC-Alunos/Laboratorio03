@@ -5,8 +5,9 @@ from random import randint
 MAX_QUERY_ATTEMPTS = 10
 GITHUB_INDEX = 0
 GITHUB_TOKEN = [
-    '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',
-    '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',
+    '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',
+    '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',
+    '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'
     ]
 
 def query_runner(query: str, attemp=1) -> dict:
@@ -26,6 +27,7 @@ def query_runner(query: str, attemp=1) -> dict:
             return query_runner(query, attemp)
 
         if remaing_requests <= '1':
+            print('Renewing token...')
             GITHUB_INDEX = (GITHUB_INDEX + 1) % len(GITHUB_TOKEN)
             return query_runner(query, attemp)
 
@@ -33,9 +35,12 @@ def query_runner(query: str, attemp=1) -> dict:
             return response.json()
 
         elif response.status_code == 502 and attemp <= MAX_QUERY_ATTEMPTS:
+            print(
+                'Attemp {}/{} get Error 502. Retrying...'.format(attemp, MAX_QUERY_ATTEMPTS))
             return query_runner(query, attemp + 1)
-        
+
         elif response.status_code == 502 and attemp > MAX_QUERY_ATTEMPTS:
+            print('Error 502. Maximum number of attempts reached. Try again later.')
             exit(1)
 
         else:

@@ -31,10 +31,10 @@ def get_pull_requests(nameWithOwner: str):
     # Divide o nome do proprietário e do repositório
     owner, name = nameWithOwner.split('/')
 
-    print("------------- GERANDO DADOS PARA O ARQUIVO CSV DE PULL REQUESTS PARA CADA REPOSITÓRIO COLETADO -------------------")
     
      # Inicia um loop para buscar todas as páginas de pull requests
     while True:
+        print("------------- GERANDO DADOS PARA O ARQUIVO CSV DE PULL REQUESTS PARA CADA REPOSITÓRIO COLETADO -------------------")
 
         # Substitui as variáveis no query com o proprietário, repositório e cursor
         query = queries.pull_requests.replace('{owner}', owner)\

@@ -4,9 +4,10 @@ import src.PRs as prs
 
 def Aplicacao(num_repos: int):
 
-    repos_filename = repos.generate_csv(num_repos)
+    # repos_filename = repos.generate_csv(num_repos)
 
-    prs.generate_csv(repos_filename)
+    # prs.generate_csv(repos_filename)
+    prs.generate_csv('./csvs/repositories-ord.csv')
 
 if __name__ == '__main__':
     import argparse
