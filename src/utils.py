@@ -5,9 +5,7 @@ from random import randint
 MAX_QUERY_ATTEMPTS = 10
 GITHUB_INDEX = 0
 GITHUB_TOKEN = [
-    '',
-    '',
-    ''
+    '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',
     ]
 
 def query_runner(query: str, attemp=1) -> dict:
