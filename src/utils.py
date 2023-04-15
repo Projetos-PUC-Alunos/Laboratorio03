@@ -7,7 +7,6 @@ GITHUB_INDEX = 0
 GITHUB_TOKEN = [
     '',
     '',
-    ''
     ]
 
 def query_runner(query: str, attemp=1) -> dict:
