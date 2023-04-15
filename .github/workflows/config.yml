@@ -3,7 +3,7 @@ name: Generate and retrieve CSV
 on:
   push:
     branches:
-      - main
+      - warley-pool-38-47
 
 jobs:
   generate-csv:
@@ -25,4 +25,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: generated-csv
-          path: ./csvs/repositories.csv
+          path: ./csvs/repositories-ord.csv
