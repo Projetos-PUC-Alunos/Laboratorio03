@@ -40,9 +40,8 @@ def get_pull_requests(nameWithOwner: str):
         query = queries.pull_requests.replace('{owner}', owner)\
                                      .replace('{name}', name)\
                                      .replace('{after}', after)
-        
+        print('__________________', owner, name, after)
         results = query_runner(query)
-
         # Se o resultado for nulo, pula para a próxima iteração do loop
         if not results: continue
 
@@ -83,6 +82,7 @@ def get_pull_requests(nameWithOwner: str):
 
 # Define uma função que gera o arquivo CSV de saída
 def generate_csv(input_path: str):
+    print("------------GERANDO CSV----------------")
     line = pd.read_csv(input_path)
     repositories = line['nameWithOwner'].unique().tolist()
     pool = mul.Pool(10)
