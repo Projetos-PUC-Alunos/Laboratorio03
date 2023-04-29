@@ -4,7 +4,7 @@ import scipy.stats as stats
 
 COLUMNS = ['changedFiles', 'hours_spent','body', 'comments']
 
-df = pd.read_csv('csvs/PRs.csv', on_bad_lines='skip', low_memory=False)
+df = pd.read_csv('csvs/OFICIAL.csv', on_bad_lines='skip', low_memory=False)
 df_merged = df[df['state'] == 'MERGED']
 df_closed = df[df['state'] == 'CLOSED']
 reviews = df['reviews']
@@ -18,9 +18,9 @@ for col in COLUMNS:
     fig, ax = plt.subplots()
     data = [closed, merged]
 
-    ax.boxplot(data, labels=['CLOSED', 'MERGED'], showfliers=True, whis=3.5)
+    ax.boxplot(data, labels=['CLOSED', 'MERGED'], showfliers=False, whis=1.5)
     ax.set_title(col)
-    plt.savefig('teste/A_' + col + '.png')
+    plt.savefig('plots/A_' + col + '.png')
     plt.close()
     
 
@@ -35,6 +35,6 @@ for col in COLUMNS:
         ylabel='reviews',
         title=title
     )
-    plt.savefig('teste/B_' + col + '.png')
+    plt.savefig('plots/B_' + col + '.png')
     plt.close()
 
